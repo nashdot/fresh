@@ -1,7 +1,7 @@
 package runner
 
 import (
-	"io"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -27,7 +27,7 @@ func build() (string, bool) {
 		fatal(err)
 	}
 
-	io.Copy(os.Stdout, identText(stdout))
+	fmt.Print(os.Stdout, identOutput(stdout))
 	errBuf, _ := ioutil.ReadAll(stderr)
 
 	err = cmd.Wait()

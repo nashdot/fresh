@@ -2,7 +2,9 @@ package runner
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
@@ -78,12 +80,15 @@ func removeBuildErrorsLog() error {
 	return err
 }
 
-func identText(text string) string {
-	identedText := ""
-	scanner := bufio.NewScanner(strings.NewReader(text))
+func identOutput(output io.ReadCloser) string {
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(output)
+
+	identedOutput := ""
+	scanner := bufio.NewScanner(strings.NewReader(buf.String()))
 	for scanner.Scan() {
-		identedText += fmt.Sprintln(" >>>", scanner.Text())
+		identedOutput += fmt.Sprintln(" >>>", scanner.Text())
 	}
 
-	return identedText
+	return identedOutput
 }

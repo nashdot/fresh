@@ -1,6 +1,7 @@
 package runner
 
 import (
+	"bufio"
 	"os"
 	"path/filepath"
 	"strings"

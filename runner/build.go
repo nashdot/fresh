@@ -27,7 +27,7 @@ func build() (string, bool) {
 		fatal(err)
 	}
 
-	fmt.Print(os.Stdout, identOutput(stdout))
+	fmt.Fprintln(os.Stdout, identOutput(stdout))
 	errBuf, _ := ioutil.ReadAll(stderr)
 
 	err = cmd.Wait()

@@ -81,7 +81,7 @@ func identText(text string) string {
 	identedText := ""
 	scanner := bufio.NewScanner(strings.NewReader(text))
 	for scanner.Scan() {
-		fmt.Sprintln(" >>> %s", scanner.Text())
+		identedText += fmt.Sprintln(" >>>", scanner.Text())
 	}
 
 	return identedText

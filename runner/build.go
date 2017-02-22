@@ -27,7 +27,7 @@ func build() (string, bool) {
 		fatal(err)
 	}
 
-	io.Copy(os.Stdout, stdout)
+	io.Copy(os.Stdout, identText(stdout))
 	errBuf, _ := ioutil.ReadAll(stderr)
 
 	err = cmd.Wait()

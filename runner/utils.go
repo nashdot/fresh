@@ -75,3 +75,13 @@ func removeBuildErrorsLog() error {
 
 	return err
 }
+
+func identText(text string) string {
+	identedText := ""
+	scanner := bufio.NewScanner(strings.NewReader(text))
+	for scanner.Scan() {
+		fmt.Sprintln(" >>> %s", scanner.Text())
+	}
+
+	return identedText
+}

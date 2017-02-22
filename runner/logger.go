@@ -4,6 +4,8 @@ import (
 	"fmt"
 	logPkg "log"
 	"time"
+
+	"github.com/mattn/go-colorable"
 )
 
 type logFunc func(string, ...interface{})

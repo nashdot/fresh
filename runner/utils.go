@@ -2,7 +2,6 @@ package runner
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -81,11 +80,8 @@ func removeBuildErrorsLog() error {
 }
 
 func identOutput(output io.ReadCloser) string {
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(output)
-
 	identedOutput := ""
-	scanner := bufio.NewScanner(strings.NewReader(buf.String()))
+	scanner := bufio.NewScanner(output)
 	for scanner.Scan() {
 		identedOutput += fmt.Sprintln(" >>>", scanner.Text())
 	}
